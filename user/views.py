@@ -16,10 +16,10 @@ def registr(request):
     return render(request, 'hello.html', {'form': form, 'message':message})
 
 
-def spisok(request):
+def get_list(request):
     reg = Name.objects.all()
     return render(request, 'spisok.html', {'reg':reg})
 
-def get_list(request, pk):
+def user_detail(request, pk):
     details = Name.objects.filter(pk=pk)
     return render(request, 'details.html', {'details':details})
