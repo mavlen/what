@@ -1,4 +1,6 @@
 from django.shortcuts import render
+
+from user.models import Name
 from .forms import Regform
 
 def mess(request):
@@ -12,3 +14,12 @@ def registr(request):
         form.save()
         return render(request, 'hello.html', {'form': form, 'message':message})
     return render(request, 'hello.html', {'form': form, 'message':message})
+
+
+def spisok(request):
+    reg = Name.objects.all()
+    return render(request, 'spisok.html', {'reg':reg})
+
+def get_list(request, pk):
+    details = Name.objects.filter(pk=pk)
+    return render(request, 'details.html', {'details':details})
